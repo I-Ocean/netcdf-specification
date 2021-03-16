@@ -1,4 +1,4 @@
-# netcdf-specification-v1.0
+# netcdf-specification-v1.3
 I/Ocean NetCDF convention for delayed mode underway data from research vessels
 
 ## I/Ocean NetCDF principle
