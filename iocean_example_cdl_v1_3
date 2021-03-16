@@ -1,0 +1,447 @@
+netcdf iocean_example_v1_3 {
+dimensions:
+	INSTANCE = UNLIMITED ; // (1 currently)
+	MAXT = 6 ;
+	STRING80 = 80 ;
+variables:
+	char trajectory(INSTANCE, STRING80) ;
+		trajectory:long_name = "Trajectory identifier" ;
+		trajectory:cf_role = "trajectory_id" ;
+	int crs ;
+		crs:grid_mapping_name = "latitude_longitude" ;
+		crs:epsg_code = "EPSG:4326" ;
+		crs:semi_major_axis = 6378137. ;
+		crs:inverse_flattening = 298.257223563 ;
+	double TIME(INSTANCE, MAXT) ;
+		TIME:_FillValue = -1. ;
+		TIME:long_name = "Time" ;
+		TIME:standard_name = "time" ;
+		TIME:units = "seconds since 1970-01-01T00:00:00Z" ;
+		TIME:calendar = "standard" ;
+		TIME:valid_min = 0. ;
+		TIME:valid_max = 9000000000. ;
+		TIME:axis = "T" ;
+		TIME:ancillary_variables = "TIME_SEADATANET_QC" ;
+		TIME:sdn_parameter_urn = "SDN:P01::ELTMEP01" ;
+		TIME:sdn_uom_urn = "SDN:P06::UTBB" ;
+		TIME:sdn_parameter_name = "Elapsed time relative to 1970-01-01T00:00:00Z" ;
+		TIME:sdn_uom_name = "Seconds" ;
+		TIME:instrument = "" ;
+		TIME:calibration = "" ;
+		TIME:deployment = "" ;
+	byte TIME_SEADATANET_QC(INSTANCE, MAXT) ;
+		TIME_SEADATANET_QC:_FillValue = 57b ;
+		TIME_SEADATANET_QC:long_name = "SeaDataNet quality flag" ;
+		TIME_SEADATANET_QC:Conventions = "SeaDataNet measurand qualifier flags" ;
+		TIME_SEADATANET_QC:coordinates = "TIME DEPTH LATITUDE LONGITUDE" ;
+		TIME_SEADATANET_QC:sdn_conventions_urn = "SDN:L20::" ;
+		TIME_SEADATANET_QC:flag_values = 48b, 49b, 50b, 51b, 52b, 53b, 54b, 55b, 56b, 57b, 65b ;
+		TIME_SEADATANET_QC:flag_meanings = "no_quality_control good_value probably_good_value probably_bad_value bad_value changed_value value_below_detection value_in_excess interpolated_value missing_value value_phenomenon_uncertain" ;
+	double LATITUDE(INSTANCE, MAXT) ;
+		LATITUDE:_FillValue = -99. ;
+		LATITUDE:long_name = "Latitude" ;
+		LATITUDE:standard_name = "latitude" ;
+		LATITUDE:units = "degrees_north" ;
+		LATITUDE:valid_min = -90. ;
+		LATITUDE:valid_max = 90. ;
+		LATITUDE:axis = "Y" ;
+		LATITUDE:ancillary_variables = "POSITION_SEADATANET_QC" ;
+		LATITUDE:sdn_parameter_urn = "SDN:P01::ALATGP01" ;
+		LATITUDE:sdn_uom_urn = "SDN:P06::DEGN" ;
+		LATITUDE:sdn_parameter_name = "Latitude north relative to WGS84 by unspecified GPS system" ;
+		LATITUDE:sdn_uom_name = "Degrees north" ;
+		LATITUDE:grid_mapping = "crs" ;
+		LATITUDE:instrument = "" ;
+		LATITUDE:calibration = "" ;
+		LATITUDE:deployment = "" ;
+	double LONGITUDE(INSTANCE, MAXT) ;
+		LONGITUDE:_FillValue = -999. ;
+		LONGITUDE:long_name = "Longitude" ;
+		LONGITUDE:standard_name = "longitude" ;
+		LONGITUDE:units = "degrees_east" ;
+		LONGITUDE:valid_min = -180. ;
+		LONGITUDE:valid_max = 180. ;
+		LONGITUDE:axis = "X" ;
+		LONGITUDE:ancillary_variables = "POSITION_SEADATANET_QC" ;
+		LONGITUDE:sdn_parameter_urn = "SDN:P01::ALONGP01" ;
+		LONGITUDE:sdn_uom_urn = "SDN:P06::DEGE" ;
+		LONGITUDE:sdn_parameter_name = "Longitude east relative to WGS84 by unspecified GPS system" ;
+		LONGITUDE:sdn_uom_name = "Degrees east" ;
+		LONGITUDE:grid_mapping = "crs" ;
+		LONGITUDE:instrument = "" ;
+		LONGITUDE:calibration = "" ;
+		LONGITUDE:deployment = "" ;
+	byte POSITION_SEADATANET_QC(INSTANCE, MAXT) ;
+		POSITION_SEADATANET_QC:_FillValue = 57b ;
+		POSITION_SEADATANET_QC:long_name = "SeaDataNet quality flag" ;
+		POSITION_SEADATANET_QC:Conventions = "SeaDataNet measurand qualifier flags" ;
+		POSITION_SEADATANET_QC:coordinates = "TIME DEPTH LATITUDE LONGITUDE" ;
+		POSITION_SEADATANET_QC:sdn_conventions_urn = "SDN:L20::" ;
+		POSITION_SEADATANET_QC:flag_values = 48b, 49b, 50b, 51b, 52b, 53b, 54b, 55b, 56b, 57b, 65b ;
+		POSITION_SEADATANET_QC:flag_meanings = "no_quality_control good_value probably_good_value probably_bad_value bad_value changed_value value_below_detection value_in_excess interpolated_value missing_value value_phenomenon_uncertain" ;
+	float DEPTH(INSTANCE, MAXT) ;
+		DEPTH:_FillValue = -1.f ;
+		DEPTH:long_name = "DepBelowSurf" ;
+		DEPTH:standard_name = "depth" ;
+		DEPTH:units = "m" ;
+		DEPTH:valid_min = 0.f ;
+		DEPTH:valid_max = 9999.f ;
+		DEPTH:axis = "Z" ;
+		DEPTH:ancillary_variables = "DEPTH_SEADATANET_QC" ;
+		DEPTH:positive = "down" ;
+		DEPTH:sdn_parameter_urn = "SDN:P01::ADEPZZ01" ;
+		DEPTH:sdn_uom_urn = "SDN:P06::ULAA" ;
+		DEPTH:sdn_parameter_name = "Depth (spatial coordinate) relative to water surface in the water body" ;
+		DEPTH:instrument = "" ;
+		DEPTH:calibration = "" ;
+		DEPTH:deployment = "" ;
+		DEPTH:sdn_uom_name = "Metres" ;
+	byte DEPTH_SEADATANET_QC(INSTANCE, MAXT) ;
+		DEPTH_SEADATANET_QC:_FillValue = 57b ;
+		DEPTH_SEADATANET_QC:long_name = "SeaDataNet quality flag" ;
+		DEPTH_SEADATANET_QC:Conventions = "SeaDataNet measurand qualifier flags" ;
+		DEPTH_SEADATANET_QC:coordinates = "TIME DEPTH LATITUDE LONGITUDE" ;
+		DEPTH_SEADATANET_QC:sdn_conventions_urn = "SDN:L20::" ;
+		DEPTH_SEADATANET_QC:flag_values = 48b, 49b, 50b, 51b, 52b, 53b, 54b, 55b, 56b, 57b, 65b ;
+		DEPTH_SEADATANET_QC:flag_meanings = "no_quality_control good_value probably_good_value probably_bad_value bad_value changed_value value_below_detection value_in_excess interpolated_value missing_value value_phenomenon_uncertain" ;
+	float seatemp(INSTANCE, MAXT) ;
+		seatemp:_FillValue = -9.f ;
+		seatemp:long_name = "sea surface temperature" ;
+		seatemp:coordinates = "TIME DEPTH LATITUDE LONGITUDE" ;
+		seatemp:standard_name = "sea_surface_temperature" ;
+		seatemp:units = "degC" ;
+		seatemp:valid_min = -3.f ;
+		seatemp:valid_max = 35.f ;
+		seatemp:ancillary_variables = "TEMPHU01_SEADATANET_QC" ;
+		seatemp:sdn_parameter_urn = "SDN:P01::TEMPHU01" ;
+		seatemp:sdn_uom_urn = "SDN:P06::UPAA" ;
+		seatemp:sdn_parameter_name = "Temperature of the water body by thermosalinograph hull sensor and NO verification against independent measurements" ;
+		seatemp:sdn_uom_name = "Degrees Celsius" ;
+		seatemp:atlantosEVid = "SDN:A05::EV_SEATEMP" ;
+		seatemp:atlantosEVname = "Temperature" ;
+		seatemp:instrument = "/instruments/TOOL0022_2490" ;
+		seatemp:calibration = "/calibrations/CAL_2435" ;
+		seatemp:deployment = "" ;
+	byte seatemp_SEADATANET_QC(INSTANCE, MAXT) ;
+		seatemp_SEADATANET_QC:_FillValue = 57b ;
+		seatemp_SEADATANET_QC:long_name = "SeaDataNet quality flag" ;
+		seatemp_SEADATANET_QC:Conventions = "SeaDataNet measurand qualifier flags" ;
+		seatemp_SEADATANET_QC:coordinates = "TIME DEPTH LATITUDE LONGITUDE" ;
+		seatemp_SEADATANET_QC:sdn_conventions_urn = "SDN:L20::" ;
+		seatemp_SEADATANET_QC:flag_values = 48b, 49b, 50b, 51b, 52b, 53b, 54b, 55b, 56b, 57b, 65b ;
+		seatemp_SEADATANET_QC:flag_meanings = "no_quality_control good_value probably_good_value probably_bad_value bad_value changed_value value_below_detection value_in_excess interpolated_value missing_value value_phenomenon_uncertain" ;
+
+// global attributes:
+		:deployment_id = "/deployments/DY122" ;
+		:title = "I/Ocean trajectory file Climate Forecast 1.8" ;
+		:Conventions = "CF-1.8 SeaDataNet-1.0 ACDD-1.3 IOcean-1.0" ;
+		:source = "Underway observations from RRS Discovery navigation, meteorology and sea surface hydrography sensor arrays" ;
+		:history = "\n2021-03-16T14:26:28Z: (NMF) File created" ;
+		:date_created = "2020-01-31T23:59:59Z" ;
+		:date_update = "2021-03-16T14:26:28Z" ;
+		:processing_level = "Raw instrument data" ;
+		:standard_name_vocabulary = "http://vocab.nerc.ac.uk/collection/P07/current/" ;
+		:sdn_vocabulary = "http://vocab.nerc.ac.uk/" ;
+		:featureType = "trajectory" ;
+		:data_interval = "1Hz" ;
+		:comment = "\n2020-01-31T23:59:59Z: XXXXX" ;
+		:_NCProperties = "version=2,netcdf=4.7.2,hdf5=1.10.5" ;
+data:
+
+ trajectory =
+  "DY122_UWAY1" ;
+
+ crs = 0 ;
+
+ TIME =
+  1615900594, 1615900595, 1615900596, 1615900597, 1615900598, 1615900599 ;
+
+ TIME_SEADATANET_QC =
+  49, 49, 49, 49, 49, 49 ;
+
+ LATITUDE =
+  -51.71759033, -51.71879196, -51.72002792, -54.596138, -54.59526443, 
+    -54.59444046 ;
+
+ LONGITUDE =
+  -57.65376663, -57.65382767, -57.65382385, -58.36009979, -58.36487961, 
+    -58.3693428 ;
+
+ POSITION_SEADATANET_QC =
+  49, 49, 49, 49, 49, 49 ;
+
+ DEPTH =
+  0, 0, 0, 0, 0, 0 ;
+
+ DEPTH_SEADATANET_QC =
+  49, 49, 49, 49, 49, 49 ;
+
+ seatemp =
+  7.4809, 7.439, _, 7.403, 7.3647, 7.3497 ;
+
+ seatemp_SEADATANET_QC =
+  49, 49, _, 49, 49, 49 ;
+
+group: instruments {
+  dimensions:
+  	NCOLUMNS = 1 ;
+
+  group: TOOL0022_2490 {
+    variables:
+    	string instrument_pid(NCOLUMNS) ;
+    		instrument_pid:long_name = "PIDINST PID" ;
+    		instrument_pid:sdn_variable_name = "TBC" ;
+    		instrument_pid:sdn_variable_urn = "TBC" ;
+    	string uuid(NCOLUMNS) ;
+    		uuid:long_name = "UUID" ;
+    		uuid:sdn_variable_name = "Universally Unique Identifier (UUID)" ;
+    		uuid:sdn_variable_urn = "SDN:W07::IDEN0007" ;
+    	string instrument_name(NCOLUMNS) ;
+    		instrument_name:long_name = "Instrument name" ;
+    		instrument_name:sdn_variable_name = "Long name" ;
+    		instrument_name:sdn_variable_urn = "SDN:W07::IDEN0002" ;
+    	string serial_number(NCOLUMNS) ;
+    		serial_number:long_name = "Instrument serial number" ;
+    		serial_number:sdn_variable_name = "Serial Number" ;
+    		serial_number:sdn_variable_urn = "SDN:W07::IDEN0005" ;
+    	string model_id(NCOLUMNS) ;
+    		model_id:long_name = "Instrument model identifier" ;
+    		model_id:sdn_variable_name = "Model name" ;
+    		model_id:sdn_variable_urn = "SDN:W07::IDEN0003" ;
+
+    // group attributes:
+    		:date_valid_from = "2020-01-31T00:00:00Z" ;
+    		:date_valid_to = "" ;
+    		:calibration = "/calibrations/CAL_2435" ;
+    		:installation = "/installations/INSTAL_00001" ;
+    		:metadata_link = "https://linkedsystems.uk/system/instance/TOOL0022_2490/current/" ;
+    		:comment = "\n2021-03-16T14:26:28Z: XXXXX" ;
+    data:
+
+     instrument_pid = "http://hdl.handle.net/21.T11998/0000-001A-3905-F" ;
+
+     uuid = "TOOL0022_2490" ;
+
+     instrument_name = "SBE 37-IM MicroCAT s/n 2490" ;
+
+     serial_number = "2490" ;
+
+     model_id = "http://vocab.nerc.ac.uk/collection/L22/current/TOOL0022/" ;
+    } // group TOOL0022_2490
+  } // group instruments
+
+group: calibrations {
+  dimensions:
+  	NCOLUMNS = 1 ;
+
+  group: CAL_2435 {
+    variables:
+    	string calibration_function(NCOLUMNS) ;
+    		calibration_function:long_name = "Calibration function" ;
+    		calibration_function:sdn_variable_name = "TBC" ;
+    		calibration_function:sdn_variable_urn = "TBC" ;
+    	string input_units(NCOLUMNS) ;
+    		input_units:long_name = "Input units" ;
+    		input_units:sdn_variable_name = "TBC" ;
+    		input_units:sdn_variable_urn = "TBC" ;
+    	string input_units_id(NCOLUMNS) ;
+    		input_units_id:long_name = "Input units identifier" ;
+    		input_units_id:sdn_variable_name = "TBC" ;
+    		input_units_id:sdn_variable_urn = "TBC" ;
+    	string output_units(NCOLUMNS) ;
+    		output_units:long_name = "Output units" ;
+    		output_units:sdn_variable_name = "TBC" ;
+    		output_units:sdn_variable_urn = "TBC" ;
+    	string output_units_id(NCOLUMNS) ;
+    		output_units_id:long_name = "Output units identifier" ;
+    		output_units_id:sdn_variable_name = "TBC" ;
+    		output_units_id:sdn_variable_urn = "TBC" ;
+    	string calibration_coefficients(NCOLUMNS) ;
+    		calibration_coefficients:long_name = "Calibration coefficients" ;
+    		calibration_coefficients:sdn_variable_name = "TBC" ;
+    		calibration_coefficients:sdn_variable_urn = "TBC" ;
+
+    // group attributes:
+    		:date_valid_from = "2019-01-31T00:00:00Z" ;
+    		:date_valid_to = "2019-01-31T00:00:00Z" ;
+    		:instrument_first_use = "2020-01-31T00:00:00Z" ;
+    		:comment = "\n2021-03-16T14:26:28Z: XXXX" ;
+    data:
+
+     calibration_function = "{\"(input - CWO) * SF\"}" ;
+
+     input_units = "Volts" ;
+
+     input_units_id = "http://vocab.nerc.ac.uk/collection/P06/current/UVLT/" ;
+
+     output_units = "Milligrams per cubic metre" ;
+
+     output_units_id = "http://vocab.nerc.ac.uk/collection/P06/current/UMMC/" ;
+
+     calibration_coefficients = "{\"SF\":5.6,\"CWO\":0.01}" ;
+    } // group CAL_2435
+  } // group calibrations
+
+group: installations {
+  dimensions:
+  	NCOLUMNS = 1 ;
+
+  group: INSTAL_00001 {
+    variables:
+    	string position_datum ;
+    		position_datum:long_name = "Instrument position datum" ;
+    		position_datum:sdn_variable_name = "TBC" ;
+    		position_datum:sdn_variable_urn = "TBC" ;
+    	string orientation_datum ;
+    		orientation_datum:long_name = "Instrument orientation datum" ;
+    		orientation_datum:sdn_variable_name = "TBC" ;
+    		orientation_datum:sdn_variable_urn = "TBC" ;
+    	string sample_depth_datum ;
+    		sample_depth_datum:long_name = "Sampling depth datum" ;
+    		sample_depth_datum:sdn_variable_name = "TBC" ;
+    		sample_depth_datum:sdn_variable_urn = "TBC" ;
+    	float x(NCOLUMNS) ;
+    		x:long_name = "x position (positive = forward)" ;
+    		x:sdn_variable_name = "x" ;
+    		x:sdn_variable_urn = "SDN:W02::002" ;
+    		x:units = "m" ;
+    		x:sdn_uom_name = "Metres" ;
+    		x:sdn_uom_urn = "SDN:P06::ULAA" ;
+    		x:coordinates = "position_datum" ;
+    	float y(NCOLUMNS) ;
+    		y:long_name = "y position (positive = up)" ;
+    		y:sdn_variable_name = "y" ;
+    		y:sdn_variable_urn = "SDN:W02::003" ;
+    		y:units = "m" ;
+    		y:sdn_uom_name = "Metres" ;
+    		y:sdn_uom_urn = "SDN:P06::ULAA" ;
+    		y:coordinates = "position_datum" ;
+    	float z(NCOLUMNS) ;
+    		z:long_name = "z position (positive = starboard)" ;
+    		z:sdn_variable_name = "z" ;
+    		z:sdn_variable_urn = "SDN:W02::004" ;
+    		z:units = "m" ;
+    		z:sdn_uom_name = "Metres" ;
+    		z:sdn_uom_urn = "SDN:P06::ULAA" ;
+    		z:coordinates = "position_datum" ;
+    	float orientation(NCOLUMNS) ;
+    		orientation:long_name = "Rotational orientation (clockwise) of instrument" ;
+    		orientation:sdn_variable_name = "TBC" ;
+    		orientation:sdn_variable_urn = "TBC" ;
+    		orientation:units = "degrees" ;
+    		orientation:sdn_uom_name = "degrees" ;
+    		orientation:sdn_uom_urn = "SDN:P06::UAAA" ;
+    		orientation:coordinates = "orientation_datum" ;
+    	float sample_depth(NCOLUMNS) ;
+    		sample_depth:long_name = "Depth of sampling point" ;
+    		sample_depth:sdn_variable_name = "TBC" ;
+    		sample_depth:sdn_variable_urn = "TBC" ;
+    		sample_depth:units = "m" ;
+    		sample_depth:sdn_uom_name = "Metres" ;
+    		sample_depth:sdn_uom_urn = "SDN:P06::ULAA" ;
+    		sample_depth:coordinates = "sample_depth_datum" ;
+
+    // group attributes:
+    		:date_valid_from = "2019-01-31T00:00:00Z" ;
+    		:date_valid_to = "2019-01-31T00:00:00Z" ;
+    		:comment = "\n2021-03-16T14:26:28Z: Installed in <niche>" ;
+    data:
+
+     position_datum = "Centre point of ship" ;
+
+     orientation_datum = "Bow of ship" ;
+
+     sample_depth_datum = "Sea level" ;
+
+     x = 10.1 ;
+
+     y = 21.4 ;
+
+     z = 2.63 ;
+
+     orientation = 0 ;
+
+     sample_depth = 5.5 ;
+    } // group INSTAL_00001
+  } // group installations
+
+group: platforms {
+  dimensions:
+  	NCOLUMNS = 1 ;
+
+  group: DISCOVERY {
+    variables:
+    	string platform_name(NCOLUMNS) ;
+    		platform_name:long_name = "Platform name" ;
+    		platform_name:sdn_variable_name = "Long name" ;
+    		platform_name:sdn_variable_urn = "SDN:W07::IDEN0002" ;
+    	string platform_model_id(NCOLUMNS) ;
+    		platform_model_id:long_name = "Model name identifier" ;
+    		platform_model_id:sdn_variable_name = "TBC" ;
+    		platform_model_id:sdn_variable_urn = "TBC" ;
+    	string platform_ices_id(NCOLUMNS) ;
+    		platform_ices_id:long_name = "ICES platform code" ;
+    		platform_ices_id:sdn_variable_name = "ICES code" ;
+    		platform_ices_id:sdn_variable_urn = "SDN:W07::IDEN0001" ;
+    	string platform_imo_id(NCOLUMNS) ;
+    		platform_imo_id:long_name = "IMO number" ;
+    		platform_imo_id:sdn_variable_name = "TBC" ;
+    		platform_imo_id:sdn_variable_urn = "TBC" ;
+    	string platform_callsign(NCOLUMNS) ;
+    		platform_callsign:long_name = "Call Sign" ;
+    		platform_callsign:sdn_variable_name = "Call Sign" ;
+    		platform_callsign:sdn_variable_urn = "SDN:W07::IDEN0010" ;
+
+    // group attributes:
+    		:date_valid_from = "2007-01-31T00:00:00Z" ;
+    		:date_valid_to = "2020-10-31T00:00:00Z" ;
+    		:comment = "\n2021-03-16T14:26:28Z: XXXXX" ;
+    data:
+
+     platform_name = "RRS Discovery" ;
+
+     platform_model_id = "TBC" ;
+
+     platform_ices_id = "http://vocab.nerc.ac.uk/collection/C17/current/74EQ/" ;
+
+     platform_imo_id = "9588029" ;
+
+     platform_callsign = "2FGX5" ;
+    } // group DISCOVERY
+  } // group platforms
+
+group: deployments {
+  dimensions:
+  	NCOLUMNS = 1 ;
+
+  group: DY122 {
+    variables:
+    	string Deployment_id(NCOLUMNS) ;
+    		Deployment_id:long_name = "Deployment identifier" ;
+    		Deployment_id:sdn_variable_name = "TBC" ;
+    		Deployment_id:sdn_variable_urn = "TBC" ;
+    	string owner_id(NCOLUMNS) ;
+    		owner_id:long_name = "Institution identifier" ;
+    		owner_id:sdn_variable_name = "TBC" ;
+    		owner_id:sdn_variable_urn = "TBC" ;
+    	string campaign_name(NCOLUMNS) ;
+    		campaign_name:long_name = "Campaign name" ;
+    		campaign_name:sdn_variable_name = "TBC" ;
+    		campaign_name:sdn_variable_urn = "TBC" ;
+
+    // group attributes:
+    		:date_valid_from = "2019-01-31T00:00:00Z" ;
+    		:date_valid_to = "2019-02-11T00:00:00Z" ;
+    		:platform = "/platforms/DISCOVERY" ;
+    		:instrument = "/instruments/TOOL0022_2490" ;
+    		:comment = "\n2021-03-16T14:26:28Z: XXXXX" ;
+    data:
+
+     Deployment_id = "DY122" ;
+
+     owner_id = "http://vocab.nerc.ac.uk/collection/B75/current/ORG00003/" ;
+
+     campaign_name = "OSMOSIS" ;
+    } // group DY122
+  } // group deployments
+}
