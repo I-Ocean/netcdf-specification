@@ -1,4 +1,4 @@
-netcdf iocean_example_v1_3 {
+netcdf iocean_example_v1_3_1 {
 dimensions:
 	INSTANCE = UNLIMITED ; // (1 currently)
 	MAXT = 6 ;
@@ -136,9 +136,9 @@ variables:
 		:title = "I/Ocean trajectory file Climate Forecast 1.8" ;
 		:Conventions = "CF-1.8 SeaDataNet-1.0 ACDD-1.3 IOcean-1.0" ;
 		:source = "Underway observations from RRS Discovery navigation, meteorology and sea surface hydrography sensor arrays" ;
-		:history = "\n2021-03-16T14:26:28Z: (NMF) File created" ;
+		:history = "\n2021-04-14T11:09:29Z: (NMF) File created" ;
 		:date_created = "2020-01-31T23:59:59Z" ;
-		:date_update = "2021-03-16T14:26:28Z" ;
+		:date_update = "2021-04-14T11:09:29Z" ;
 		:processing_level = "Raw instrument data" ;
 		:standard_name_vocabulary = "http://vocab.nerc.ac.uk/collection/P07/current/" ;
 		:sdn_vocabulary = "http://vocab.nerc.ac.uk/" ;
@@ -215,7 +215,7 @@ group: instruments {
     		:calibration = "/calibrations/CAL_2435" ;
     		:installation = "/installations/INSTAL_00001" ;
     		:metadata_link = "https://linkedsystems.uk/system/instance/TOOL0022_2490/current/" ;
-    		:comment = "\n2021-03-16T14:26:28Z: XXXXX" ;
+    		:comment = "\n2021-04-14T11:09:29Z: XXXXX" ;
     data:
 
      instrument_pid = "http://hdl.handle.net/21.T11998/0000-001A-3905-F" ;
@@ -265,7 +265,7 @@ group: calibrations {
     		:date_valid_from = "2019-01-31T00:00:00Z" ;
     		:date_valid_to = "2019-01-31T00:00:00Z" ;
     		:instrument_first_use = "2020-01-31T00:00:00Z" ;
-    		:comment = "\n2021-03-16T14:26:28Z: XXXX" ;
+    		:comment = "\n2021-04-14T11:09:29Z: XXXX" ;
     data:
 
      calibration_function = "{\"(input - CWO) * SF\"}" ;
@@ -344,7 +344,7 @@ group: installations {
     // group attributes:
     		:date_valid_from = "2019-01-31T00:00:00Z" ;
     		:date_valid_to = "2019-01-31T00:00:00Z" ;
-    		:comment = "\n2021-03-16T14:26:28Z: Installed in <niche>" ;
+    		:comment = "\n2021-04-14T11:09:29Z: Installed in <niche>" ;
     data:
 
      position_datum = "Centre point of ship" ;
@@ -395,7 +395,7 @@ group: platforms {
     // group attributes:
     		:date_valid_from = "2007-01-31T00:00:00Z" ;
     		:date_valid_to = "2020-10-31T00:00:00Z" ;
-    		:comment = "\n2021-03-16T14:26:28Z: XXXXX" ;
+    		:comment = "\n2021-04-14T11:09:30Z: XXXXX" ;
     data:
 
      platform_name = "RRS Discovery" ;
@@ -434,7 +434,7 @@ group: deployments {
     		:date_valid_to = "2019-02-11T00:00:00Z" ;
     		:platform = "/platforms/DISCOVERY" ;
     		:instrument = "/instruments/TOOL0022_2490" ;
-    		:comment = "\n2021-03-16T14:26:28Z: XXXXX" ;
+    		:comment = "\n2021-04-14T11:09:30Z: XXXXX" ;
     data:
 
      Deployment_id = "DY122" ;
